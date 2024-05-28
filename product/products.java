@@ -54,9 +54,12 @@ public class products extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Segoe Script", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 102, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PRODUCTS LIST");
 
+        jButton1.setBackground(new java.awt.Color(219, 239, 235));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/arrow back.png"))); // NOI18N
         jButton1.setText("BACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,7 +67,10 @@ public class products extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Segoe Print", 1, 14)); // NOI18N
+        jButton2.setBackground(new java.awt.Color(255, 153, 153));
+        jButton2.setFont(new java.awt.Font("Segoe Print", 1, 13)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(51, 51, 51));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/total.png"))); // NOI18N
         jButton2.setText("ADD NEW PRODUCT");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,8 +86,8 @@ public class products extends javax.swing.JFrame {
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,6 +121,9 @@ public class products extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jPanel2.setBackground(new java.awt.Color(253, 242, 232));
+
+        jRadioButton1.setBackground(new java.awt.Color(78, 176, 155));
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setText("KITCHENWARE");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +132,7 @@ public class products extends javax.swing.JFrame {
             }
         });
 
+        jRadioButton2.setBackground(new java.awt.Color(255, 153, 153));
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("BATHROOM ACCESSORIES");
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -131,6 +141,7 @@ public class products extends javax.swing.JFrame {
             }
         });
 
+        jRadioButton3.setBackground(new java.awt.Color(255, 255, 204));
         buttonGroup1.add(jRadioButton3);
         jRadioButton3.setText("LIVING ROOM DECOR");
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -144,12 +155,12 @@ public class products extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(111, Short.MAX_VALUE)
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jRadioButton3)
                     .addComponent(jRadioButton2)
                     .addComponent(jRadioButton1))
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         jPanel2Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jRadioButton1, jRadioButton2, jRadioButton3});
@@ -181,7 +192,7 @@ public class products extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 735, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -210,7 +221,7 @@ public class products extends javax.swing.JFrame {
             try {
               
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                String url = "jdbc:sqlserver://localhost:1433;databaseName=MOONHOUSE;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+                String url = "jdbc:sqlserver://localhost:1433;databaseName=MOONHOUSE;user=sa;password=yennguyen@;encrypt=true;trustServerCertificate=true";
                 conn = DriverManager.getConnection(url);
                 String sql="SELECT *FROM Products WHERE category='Kitchenware'";
                 st=conn.createStatement();
@@ -248,7 +259,7 @@ public class products extends javax.swing.JFrame {
             try {
               
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                String url = "jdbc:sqlserver://localhost:1433;databaseName=MOONHOUSE;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+                String url = "jdbc:sqlserver://localhost:1433;databaseName=MOONHOUSE;user=sa;password=yennguyen@;encrypt=true;trustServerCertificate=true";
                 conn = DriverManager.getConnection(url);
                 String sql="SELECT *FROM Products WHERE category='Bathroom'";
                 st=conn.createStatement();
@@ -285,7 +296,7 @@ public class products extends javax.swing.JFrame {
             try {
               
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                String url = "jdbc:sqlserver://localhost:1433;databaseName=MOONHOUSE;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+                String url = "jdbc:sqlserver://localhost:1433;databaseName=MOONHOUSE;user=sa;password=yennguyen@;encrypt=true;trustServerCertificate=true";
                 conn = DriverManager.getConnection(url);
                 String sql="SELECT *FROM Products WHERE category='Living Room Decor'";
                 st=conn.createStatement();
@@ -330,7 +341,7 @@ public class products extends javax.swing.JFrame {
                 PreparedStatement pstmt=null; 
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
                 
-                String url = "jdbc:sqlserver://localhost:1433;databaseName=MOONHOUSE;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+                String url = "jdbc:sqlserver://localhost:1433;databaseName=MOONHOUSE;user=sa;password=yennguyen@;encrypt=true;trustServerCertificate=true";
                 
                 String sql = "SELECT quantity_sold, sale FROM Products " +
              "JOIN sale ON Products.productID = sale.productID " +

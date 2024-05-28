@@ -45,7 +45,7 @@ public class addProduct extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        activateJ = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         nameF = new javax.swing.JTextField();
         priceF = new javax.swing.JTextField();
         categoryF = new javax.swing.JTextField();
@@ -65,8 +65,9 @@ public class addProduct extends javax.swing.JFrame {
 
         jMenuItem1.setText("jMenuItem1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(253, 242, 232));
         jPanel1.setBorder(new javax.swing.border.MatteBorder(null));
 
         jLabel1.setFont(new java.awt.Font("Segoe Print", 0, 14)); // NOI18N
@@ -88,9 +89,11 @@ public class addProduct extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("ACTIVATE:");
 
-        activateJ.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "YES","NO"}));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "YES","NO"}));
 
+        jButton1.setBackground(new java.awt.Color(78, 176, 155));
         jButton1.setFont(new java.awt.Font("Segoe Script", 1, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/total.png"))); // NOI18N
         jButton1.setText("ADD");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,7 +116,7 @@ public class addProduct extends javax.swing.JFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(activateJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(nameF, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(priceF, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(categoryF, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -145,7 +148,7 @@ public class addProduct extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(activateJ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -159,9 +162,12 @@ public class addProduct extends javax.swing.JFrame {
 
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(178, 127, 122));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("ADD NEW PRODUCT");
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -203,7 +209,7 @@ public class addProduct extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         if (nameF.getText().isEmpty() || priceF.getText().isEmpty() || categoryF.getText().isEmpty()|| supplierF.getText().isEmpty()) {
+ if (nameF.getText().isEmpty() || priceF.getText().isEmpty() ||supplierF.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "PLEASE ENTER ALL THE FIELDS");
         }
 
@@ -211,9 +217,9 @@ public class addProduct extends javax.swing.JFrame {
 
             String name = nameF.getText().trim();
             String  price = priceF.getText().trim();
-            String cateogry = categoryF.getText().trim();
+            String category = (String)jComboBox1.getSelectedItem();
             String supplier = supplierF.getText().trim();
-            String activate=(String) activateJ.getSelectedItem();
+            String activate=(String) jComboBox1.getSelectedItem();
  
 
             Connection conn = null;
@@ -269,18 +275,30 @@ public class addProduct extends javax.swing.JFrame {
                 pstmt.setInt(1,id);
                 pstmt.setString(2, name);
                 pstmt.setString(3, price);
-                pstmt.setString(4,supplier);
-                pstmt.setString(5,activate);
+                pstmt.setString(4,category);
+                pstmt.setString(5,supplier);
                 pstmt.setString(6,activate);
                 int rowsAffected = pstmt.executeUpdate();
-
+                
+                
                 if (rowsAffected > 0) {
-                    JOptionPane.showMessageDialog(null,"Dữ liệu đã được chèn thành công vào bảng customer.");
+                    JOptionPane.showMessageDialog(null,"Dữ liệu đã được chèn thành công vào bảng Products.");
                 } else {
-                   JOptionPane.showMessageDialog(null,"Không có dữ liệu nào được chèn vào bảng customer.");
+                   JOptionPane.showMessageDialog(null,"Không có dữ liệu nào được chèn vào bảng Products.");
                 }
-
-                // Tăng biến đếm cho lần chèn dữ liệu tiếp theo
+                String saleID="Insert into sale (productID,quantity_sold,sale) VALUES(?,?,?) ";
+                pstmt=conn.prepareStatement(saleID);
+                pstmt.setInt(1,id);
+                pstmt.setLong(2,0);
+                pstmt.setLong(3,0);
+            
+                rowsAffected=pstmt.executeUpdate();
+                
+if (rowsAffected > 0) {
+                    JOptionPane.showMessageDialog(null,"Dữ liệu đã được chèn thành công vào bảng sale.");
+                } else {
+                   JOptionPane.showMessageDialog(null,"Không có dữ liệu nào được chèn vào bảng sale.");
+                }
 
             } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
@@ -297,7 +315,7 @@ public class addProduct extends javax.swing.JFrame {
             }
             
         
-        }
+        }                   
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -336,10 +354,10 @@ public class addProduct extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> activateJ;
     private javax.swing.JTextField categoryF;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

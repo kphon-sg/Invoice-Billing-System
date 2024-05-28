@@ -30,7 +30,7 @@ public class customerHistory extends javax.swing.JFrame {
         
        
        ///// Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-          ////      String url = "jdbc:sqlserver://localhost:1433;databaseName=MOONHOUSE;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+          ////      String url = "jdbc:sqlserver://localhost:1433;databaseName=MOONHOUSE;user=sa;password=yennguyen@;encrypt=true;trustServerCertificate=true";
               /////  conn = DriverManager.getConnection(url);
         
         
@@ -60,7 +60,6 @@ public class customerHistory extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         nameF = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jProgressBar1 = new javax.swing.JProgressBar();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
@@ -79,7 +78,9 @@ public class customerHistory extends javax.swing.JFrame {
 
         jPanel2.setBorder(new javax.swing.border.MatteBorder(null));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe Print", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(178, 127, 122));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText(" CUSTOMER HISTORY");
 
@@ -89,7 +90,9 @@ public class customerHistory extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText(" NAME:");
 
+        jButton1.setBackground(new java.awt.Color(78, 176, 155));
         jButton1.setFont(new java.awt.Font("Segoe Script", 1, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Res/find.png"))); // NOI18N
         jButton1.setText(" CHECK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,8 +117,6 @@ public class customerHistory extends javax.swing.JFrame {
                         .addGap(96, 96, 96)
                         .addComponent(jButton1)
                         .addGap(204, 204, 204)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(41, 41, 41))
         );
         jPanel2Layout.setVerticalGroup(
@@ -130,12 +131,9 @@ public class customerHistory extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addComponent(jButton1)))
                 .addContainerGap(58, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
         );
 
+        jTable1.setBackground(new java.awt.Color(253, 242, 232));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -194,7 +192,7 @@ public class customerHistory extends javax.swing.JFrame {
                 PreparedStatement pstmt=null;
                java.sql.Connection conn=null;
                 Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                String url = "jdbc:sqlserver://localhost:1433;databaseName=MOONHOUSE;user=sa;password=123456;encrypt=true;trustServerCertificate=true";
+                String url = "jdbc:sqlserver://localhost:1433;databaseName=MOONHOUSE;user=sa;password=yennguyen@;encrypt=true;trustServerCertificate=true";
                 conn = DriverManager.getConnection(url);
                 String name=nameF.getText();
                 String sql = "SELECT invoice_id, status, Date, Total_Price, payment " +
@@ -277,7 +275,6 @@ public class customerHistory extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField nameF;
